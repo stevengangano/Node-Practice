@@ -8,7 +8,7 @@ console.log('starting app')
 const fs = require ('fs');
 //allows to fetch things like username
 const os = require('os');
-const notes = require('./notes.js');
+const notes = require('./notes1.js');
 const _ = require('lodash');
 
 // console.log(user); 
