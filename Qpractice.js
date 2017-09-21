@@ -10,7 +10,7 @@ const fs = require ('fs');
 //allows to fetch things like username
 const os = require('os');
 
-const notes = require('./Qpracticenotes.js');
+const qnotes = require('./Qpracticenotes.js');
 
 
 //To create a command in the array, type " nodeapp2.js list" in the command line
@@ -31,13 +31,40 @@ console.log('Yargs: ', argv)
 //To check if a command exists
 if (command === 'add') {
 	//Type: node app2.js add --title="Secret" --body="This is my Secret" 
-	notes.addNoteProp(argv.title, argv.body) 
+	var note = qnotes.addNoteProp(argv.title, argv.body) 
+	//if a note is created
+	if (note) {
+		console.log('Note created');
+		console.log(`Title: ${note.title}`);
+		console.log(`Body: ${note.body}`);
+	} else {
+		//else create
+		console.log('Note title taken')
+	}
 } else if (command === 'list') {
-	//Type: node app2.js list
-	notes2.getAllProp();
+	//fetches all the notes
+	var allNotes = qnotes.getAllProp();
+	console.log(`Printing ${allNotes.length} notes.`)
+	//loops through the array of notes
+	allNotes.forEach((note) => {
+		console.log(`Title: ${note.title}`);
+		console.log(`Body: ${note.body}`);	
+	});
+} else if (command === 'read') {
+     var note = qnotes.getNotesProp(argv.title);
+     if (note) {
+        console.log('Note read');
+		console.log(`Title: ${note.title}`);
+		console.log(`Body: ${note.body}`); 
+    } else {
+       console.log('Note not found');
+    }
 } else if (command === 'remove') {
 	//Type: node app2.js remove
-	notes2.removeAllNotesProp();	
+	var noteRemoved = qnotes.removeANoteProp(argv.title);	
+	//if noteRemoved passes, note was removed else note not found 
+	var message = noteRemoved ? 'Note was removed ' : 'Note not found';
+	console.log(message);
 } else {
     console.log('Command not found');
 }
