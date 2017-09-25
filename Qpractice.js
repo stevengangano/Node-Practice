@@ -1,8 +1,10 @@
 console.log('starting practice1.js')
 
 const _ = require('lodash');
+
 //Allows to add key value pairs in the array 
 //Creates an object
+//Need to create a flag
 const yargs = require('yargs');
 
 //allows to create a new file
@@ -15,16 +17,20 @@ const qnotes = require('./Qpracticenotes.js');
 
 //To create a command in the array, type " nodeapp2.js list" in the command line
 //This creates a command called "list"
-//Accessing date from command line
+//"argv" = object
 const argv = yargs.argv;
-var command = process.argv[2]; //or
-var command = argv._[0]
+var command = process.argv[2]; //or var command = argv._[0]
+//[ '/usr/local/bin/node',
+//  '/Users/stevengangano/Dropbox/Codify/node_practice/Qpractice.js',
+//  'add',
+//  '--title=skateboard',
+//  '--body=iphone' ]
 console.log('Process: ', process.argv);
 console.log('Command: ', command);
 //Creates an object below. If you type node "app.js list encrypted",
 //Yargs:  { _: [ 'list', 'encrypted' ], '$0': 'app2.js' }
-//If you type "node app2.js add --title=secrets",
-//Yargs:  { _: [ 'add' ], title: 'secrets', '$0': 'app2.js' }
+//If you type: node Qpractice.js add --title="skateboardBrand" --body="birdhouse". It creates an object below.
+//Yargs:  { _: [ 'add' ], title: 'skateboardBrand', body: 'birdhouse', '$0': 'Qpractice.js' }
 console.log('Yargs: ', argv)
 
     
