@@ -102,8 +102,6 @@ app.get("/", function(req, res) {
 });
 
 
-
-
 	//returns '1301%20lombard%20st%20philadelphia'
 	encodeURIComponent('1301 lombard st philadelphia');
 
